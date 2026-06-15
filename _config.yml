@@ -1,0 +1,9 @@
+title: "Capturando la Luz"
+description: "Donde la luz cuenta historias"
+url: "https://tinocomartin.com"
+baseurl: ""
+theme: minima
+header_pages:
+  - galerias.md
+  - sobre-mi.md
+  - contacto.md
