@@ -7,7 +7,7 @@ title: Capturando la Luz
 
 ## Donde la luz cuenta historias
 
-Fotografía nocturna, paisaje, patrimonio y relatos visuales.
+Fotografía nocturna, paisaje, y relatos visuales.
 
 ### Bienvenido
 
