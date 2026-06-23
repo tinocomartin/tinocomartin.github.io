@@ -12,6 +12,4 @@ Añade aquí tus mejores imágenes nocturnas.
 
 Añade aquí tus mejores paisajes.
 
-## Patrimonio
 
-Iglesias, ermitas y localizaciones históricas.
