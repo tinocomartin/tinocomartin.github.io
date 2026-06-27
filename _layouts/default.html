@@ -1,1 +1,36 @@
-{{ page.title }} | {{ site.title }}{{ content }}© {{ site.time | date: '%Y' }} {{ site.title }}. Todos los derechos reservados.absolute;bo                                                                                                                                                                                                                                                                                                                            ttom: 0;left: 0;width: 100%;padding: 4rem;background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));color: #ffffff;}.hero-overlay h1 {font-size: 3rem;margin-bottom: 0.5rem;}.hero-overlay p {font-size: 1.1rem;letter-spacing: 2px;text-transform: uppercase;opacity: 0.9;}/* Categorías Destacadas */.featured-categories {padding: 2rem 0;}.featured-categories h2 {text-align: center;margin-bottom: 3rem;text-transform: uppercase;letter-spacing: 2px;font-size: 1.2rem;color: #666;}.categories-grid {display: grid;grid-template-columns: repeat(2, 1fr);gap: 30px;}.category-card {position: relative;display: block;height: 400px;overflow: hidden;text-decoration: none;}.category-card img {width: 100%;height: 100%;object-fit: cover;transition: transform 0.6s ease;}.category-title {position: absolute;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.2);display: flex;justify-content: center;align-items: center;transition: background 0.4s ease;}.category-title h3 {color: #ffffff;font-size: 2rem;letter-spacing: 3px;text-transform: uppercase;margin: 0;border-bottom: 1px solid transparent;transition: border-color 0.4s ease;}/* Efectos Hover */.category-card:hover img {transform: scale(1.05);}.category-card:hover .category-title {background: rgba(0, 0, 0, 0.4);}.category-card:hover .category-title h3 {border-color: #ffffff;}/* Ajustes Móvil */@media (max-width: 768px) {.hero-section {height: 50vh;}.hero-overlay {padding: 1.5rem;}.hero-overlay h1 {font-size: 2rem;}.categories-grid {grid-template-columns: 1fr;}.category-card {height: 300px;}}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} | {{ site.title }}</title>
+
+  <link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}">
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="logo">
+    <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
+  </div>
+
+  <nav class="site-nav">
+    <a href="{{ '/' | relative_url }}">Inicio</a>
+    <a href="{{ '/galerias/' | relative_url }}">Galerías</a>
+    <a href="{{ '/fototerapia/' | relative_url }}">Fototerapia</a>
+    <a href="{{ '/sobre-mi/' | relative_url }}">Sobre mí</a>
+    <a href="{{ '/contacto/' | relative_url }}">Contacto</a>
+  </nav>
+</header>
+
+<main class="site-content">
+{{ content }}
+</main>
+
+<footer class="site-footer">
+© {{ site.time | date: "%Y" }} {{ site.title }} · Todos los derechos reservados.
+</footer>
+
+</body>
+</html>ttom: 0;left: 0;width: 100%;padding: 4rem;background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));color: #ffffff;}.hero-overlay h1 {font-size: 3rem;margin-bottom: 0.5rem;}.hero-overlay p {font-size: 1.1rem;letter-spacing: 2px;text-transform: uppercase;opacity: 0.9;}/* Categorías Destacadas */.featured-categories {padding: 2rem 0;}.featured-categories h2 {text-align: center;margin-bottom: 3rem;text-transform: uppercase;letter-spacing: 2px;font-size: 1.2rem;color: #666;}.categories-grid {display: grid;grid-template-columns: repeat(2, 1fr);gap: 30px;}.category-card {position: relative;display: block;height: 400px;overflow: hidden;text-decoration: none;}.category-card img {width: 100%;height: 100%;object-fit: cover;transition: transform 0.6s ease;}.category-title {position: absolute;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.2);display: flex;justify-content: center;align-items: center;transition: background 0.4s ease;}.category-title h3 {color: #ffffff;font-size: 2rem;letter-spacing: 3px;text-transform: uppercase;margin: 0;border-bottom: 1px solid transparent;transition: border-color 0.4s ease;}/* Efectos Hover */.category-card:hover img {transform: scale(1.05);}.category-card:hover .category-title {background: rgba(0, 0, 0, 0.4);}.category-card:hover .category-title h3 {border-color: #ffffff;}/* Ajustes Móvil */@media (max-width: 768px) {.hero-section {height: 50vh;}.hero-overlay {padding: 1.5rem;}.hero-overlay h1 {font-size: 2rem;}.categories-grid {grid-template-columns: 1fr;}.category-card {height: 300px;}}
