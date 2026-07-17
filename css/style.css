@@ -1,1 +1,319 @@
-/* Reset de estilos básicos */{margin: 0;padding: 0;box-sizing: border-box;}body {font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;background-color: #ffffff;color: #1a1a1a;line-height: 1.6;}/* Cabecera y Navegación */.site-header {display: flex;justify-content: space-between;align-items: center;padding: 2rem 4rem;max-width: 1400px;margin: 0 auto;}.logo a {font-family: "Georgia", serif;font-size: 1.5rem;font-weight: bold;text-transform: uppercase;letter-spacing: 2px;text-decoration: none;color: #1a1a1a;}.site-nav a {text-decoration: none;color: #666666;margin-left: 2rem;font-size: 0.9rem;text-transform: uppercase;letter-spacing: 1px;transition: color 0.3s ease;}.site-nav a:hover {color: #1a1a1a;}/* Contenedor Principal */.site-content {max-width: 1400px;margin: 0 auto;padding: 0 4rem 4rem 4rem;}h1, h2, h3 {font-family: "Georgia", serif;font-weight: 300;margin-bottom: 1.5rem;}/* Sección de Portada (Hero) */.hero-section {position: relative;width: 100%;height: 70vh;overflow: hidden;margin-bottom: 4rem;}.hero-image {width: 100%;height: 100%;object-fit: cover;display: block;}.hero-overlay {position: absolute;bottom: 0;left: 0;width: 100%;padding: 4rem;background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));color: #ffffff;}.hero-overlay h1 {font-size: 3rem;margin-bottom: 0.5rem;}.hero-overlay p {font-size: 1.1rem;letter-spacing: 2px;text-transform: uppercase;opacity: 0.9;}/* Categorías Destacadas en Inicio */.featured-categories {padding: 2rem 0;}.featured-categories h2 {text-align: center;margin-bottom: 3rem;text-transform: uppercase;letter-spacing: 2px;font-size: 1.2rem;color: #666;}.categories-grid {display: grid;grid-template-columns: repeat(2, 1fr);gap: 30px;}.category-card {position: relative;display: block;height: 400px;overflow: hidden;text-decoration: none;}.category-card img {width: 100%;height: 100%;object-fit: cover;transition: transform 0.6s ease;}.category-title {position: absolute;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.2);display: flex;justify-content: center;align-items: center;transition: background 0.4s ease;}.category-title h3 {color: #ffffff;font-size: 2rem;letter-spacing: 3px;text-transform: uppercase;margin: 0;border-bottom: 1px solid transparent;transition: border-color 0.4s ease;}.category-card:hover img {transform: scale(1.05);}.category-card:hover .category-title {background: rgba(0, 0, 0, 0.4);}.category-card:hover .category-title h3 {border-color: #ffffff;}/* Cuadrícula de las Galerías Internas */.gallery-grid {display: grid;grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));gap: 20px;}.gallery-item {overflow: hidden;background-color: #f5f5f5;}.gallery-item img {width: 100%;height: 100%;object-fit: cover;display: block;transition: transform 0.5s ease;}.gallery-item:hover img {transform: scale(1.03);}/* Pie de página */.site-footer {text-align: center;padding: 3rem 0;font-size: 0.8rem;color: #999999;letter-spacing: 1px;}/* Adaptabilidad para móviles */@media (max-width: 768px) {.site-header {flex-direction: column;padding: 1.5rem;gap: 1rem;}.site-nav a {margin: 0 0.7rem;}.site-content {padding: 0 1.5rem 2rem 1.5rem;}.hero-section {height: 50vh;}.hero-overlay {padding: 1.5rem;}.hero-overlay h1 {font-size: 2rem;}.categories-grid {grid-template-columns: 1fr;}.category-card {height: 300px;}.gallery-grid {grid-template-columns: 1fr;}}
+/* ============================================
+   Capturando la Luz — hoja de estilos
+   ============================================ */
+
+/* Reset básico */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+
+h1, h2, h3 {
+  font-family: Georgia, serif;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+
+/* Accesibilidad: foco visible siempre */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #1a1a1a;
+  outline-offset: 3px;
+}
+
+/* ============ Cabecera y navegación ============ */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.logo a {
+  font-family: Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-decoration: none;
+  color: #1a1a1a;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: #666666;
+  margin-left: 2rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.site-nav a:hover { color: #1a1a1a; }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  background: #1a1a1a;
+}
+
+/* ============ Contenedor principal ============ */
+.site-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 4rem 4rem 4rem;
+}
+
+.site-content p { max-width: 68ch; margin-bottom: 1.2rem; }
+.site-content ul { margin: 0 0 1.2rem 1.2rem; }
+.site-content li { margin-bottom: 0.4rem; }
+
+/* ============ Sección Hero (portada) ============ */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+  margin-bottom: 4rem;
+}
+.hero-image { width: 100%; height: 100%; object-fit: cover; }
+.hero-overlay {
+  position: absolute;
+  bottom: 0; left: 0; width: 100%;
+  padding: 4rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.65), rgba(0,0,0,0));
+  color: #ffffff;
+}
+.hero-overlay h1 { color: #ffffff; font-size: 3rem; margin-bottom: 0.5rem; }
+.hero-overlay p {
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+/* ============ Categorías destacadas (Inicio y Galerías) ============ */
+.featured-categories { padding: 2rem 0; }
+.featured-categories h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1.2rem;
+  color: #666;
+}
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+.category-card {
+  position: relative;
+  display: block;
+  height: 400px;
+  overflow: hidden;
+  text-decoration: none;
+}
+.category-card img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.category-title {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem;
+  transition: background 0.4s ease;
+}
+.category-title h3 {
+  color: #ffffff;
+  font-size: 1.8rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin: 0 0 0.5rem 0;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.4s ease;
+}
+.category-title p {
+  color: #f0f0f0;
+  font-size: 0.85rem;
+  max-width: 30ch;
+}
+.category-card:hover img { transform: scale(1.05); }
+.category-card:hover .category-title { background: rgba(0,0,0,0.45); }
+.category-card:hover .category-title h3 { border-color: #ffffff; }
+
+/* ============ Página "Sobre mí" ============ */
+.about-block {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+.about-portrait {
+  width: 260px;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+.about-text { flex: 1; min-width: 280px; }
+
+/* ============ Páginas de galería individual ============ */
+.gallery-page h1 { margin-bottom: 0.5rem; }
+.gallery-desc { color: #555; max-width: 60ch; margin-bottom: 2.5rem; }
+.gallery-empty { color: #777; font-style: italic; }
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+.gallery-item {
+  display: block;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  aspect-ratio: 4 / 3;
+  text-decoration: none;
+}
+.gallery-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.gallery-item:hover img { transform: scale(1.04); }
+
+/* ============ Visor de imágenes (lightbox) ============ */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.lightbox[hidden] { display: none; }
+
+.lightbox-figure {
+  max-width: 90vw;
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 82vh;
+  object-fit: contain;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+.lightbox-counter {
+  color: #cccccc;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  margin-top: 1rem;
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 1rem;
+}
+.lightbox-close { top: 0.5rem; right: 1rem; font-size: 2.5rem; }
+.lightbox-prev { left: 0.5rem; top: 50%; transform: translateY(-50%); }
+.lightbox-next { right: 0.5rem; top: 50%; transform: translateY(-50%); }
+.lightbox-close:hover,
+.lightbox-prev:hover,
+.lightbox-next:hover { color: #cccccc; }
+
+/* ============ Pie de página ============ */
+.site-footer {
+  text-align: center;
+  padding: 3rem 0;
+  font-size: 0.8rem;
+  color: #999999;
+  letter-spacing: 1px;
+}
+.footer-signature {
+  height: 40px;
+  width: auto;
+  margin: 0 auto 0.75rem auto;
+  opacity: 0.8;
+}
+
+/* Respeta la preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
+/* ============ Adaptación a móvil ============ */
+@media (max-width: 900px) {
+  .categories-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .site-header { padding: 1.5rem; }
+  .nav-toggle { display: flex; }
+  .site-nav {
+    display: none;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: #ffffff;
+    flex-direction: column;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  }
+  .site-nav.is-open { display: flex; }
+  .site-nav a { margin: 0.6rem 0; }
+
+  .site-content { padding: 0 1.5rem 2rem 1.5rem; }
+
+  .hero-section { height: 50vh; }
+  .hero-overlay { padding: 1.5rem; }
+  .hero-overlay h1 { font-size: 2rem; }
+
+  .categories-grid { grid-template-columns: 1fr; }
+  .category-card { height: 300px; }
+
+  .gallery-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  .about-block { flex-direction: column; }
+  .about-portrait { width: 180px; }
+
+  .lightbox-prev, .lightbox-next { font-size: 1.4rem; padding: 0.6rem; }
+  .lightbox-close { font-size: 2rem; }
+}
