@@ -1,4 +1,10 @@
 title: "Capturando la Luz"
-description: "Portafolio de fotografía de paisaje, nocturna y urbana."
+description: "Fotografía nocturna, de paisaje y de vehículos clásicos. Donde la luz cuenta historias."
+lang: es
 permalink: /:basename/
 markdown: kramdown
+encoding: utf-8
+
+# Le dice a Jekyll que ignore este archivo al construir la web
+exclude:
+  - README.md

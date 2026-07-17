@@ -1,24 +1,40 @@
- <a href="/autor/" class="collection-card">
+---
+layout: default
+title: Inicio
+permalink: /
+description: "Portafolio de fotografía nocturna, de paisaje y de vehículos clásicos de José Antonio Tinoco Martín."
+---
+<section class="hero-section">
+  <img class="hero-image" src="{{ '/assets/portada/Portada.png' | relative_url }}" alt="Fotografía nocturna de Tinoco">
+  <div class="hero-overlay">
+    <h1>Capturando la Luz</h1>
+    <p>Donde la luz cuenta historias</p>
+  </div>
+</section>
 
-            <img
-                src="/assets/autor/YoAutor.png"
-                alt="Autor">
-
-            <div class="collection-card__content">
-
-                <h3>Autor</h3>
-
-                <p>
-
-                    Mi forma de entender la fotografía,
-                    los proyectos personales y el camino recorrido.
-
-                </p>
-
-            </div>
-
-        </a>
-
-    </div>
-
+<section class="featured-categories">
+  <h2>Galerías</h2>
+  <div class="categories-grid">
+    <a href="{{ '/nocturna/' | relative_url }}" class="category-card">
+      <img src="{{ '/assets/nocturna/El-Molino.jpg' | relative_url }}" alt="Galería Nocturna">
+      <div class="category-title">
+        <h3>Nocturna</h3>
+        <p>Ermitas, ruinas y paisajes bajo un cielo estrellado.</p>
+      </div>
+    </a>
+    <a href="{{ '/paisaje/' | relative_url }}" class="category-card">
+      <img src="{{ '/assets/paisaje/Gaztelugatxe%20Tormenta.jpg' | relative_url }}" alt="Galería Paisaje">
+      <div class="category-title">
+        <h3>Paisaje</h3>
+        <p>Niebla, tormenta y luz sobre el territorio.</p>
+      </div>
+    </a>
+    <a href="{{ '/vehiculos/' | relative_url }}" class="category-card">
+      <img src="{{ '/assets/vehiculos/Red%20Car.jpg' | relative_url }}" alt="Galería Vehículos">
+      <div class="category-title">
+        <h3>Vehículos</h3>
+        <p>Clásicos y oxidados, retratados con cariño.</p>
+      </div>
+    </a>
+  </div>
 </section>

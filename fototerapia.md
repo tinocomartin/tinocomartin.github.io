@@ -1,8 +1,9 @@
+---
 layout: page
 title: Fototerapia
 permalink: /fototerapia/
+description: "Reflexiones sobre lo que la fotografía nocturna aporta más allá de la propia imagen."
 ---
-# Fototerapia
 
 No soy psicólogo ni terapeuta. Tampoco pretendo dar lecciones sobre cómo afrontar los momentos difíciles que todos atravesamos alguna vez. Sin embargo, la fotografía me ha enseñado algo valioso: existen lugares donde el ruido desaparece y donde, por unas horas, la mente encuentra descanso.
 
