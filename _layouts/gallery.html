@@ -30,7 +30,9 @@ layout: default
            class="gallery-item"
            data-full="{{ photo.path | relative_url }}"
            data-file="{{ photo.name | escape }}">
-          <img src="{{ photo.path | relative_url }}" alt="{{ photo.basename | escape }} — {{ page.title }}" loading="lazy">
+          {% assign titulo = photo.basename | replace: '-', ' ' | replace: '_', ' ' | remove: ' copia' | strip %}
+          <img src="{{ photo.path | relative_url }}" alt="{{ titulo | escape }}" loading="lazy" decoding="async">
+          <span class="gallery-item-title">{{ titulo | escape }}</span>
         </a>
       {% endfor %}
     </div>

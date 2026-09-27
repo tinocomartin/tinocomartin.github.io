@@ -1,15 +1,36 @@
 title: "Capturando la Luz"
 description: "Fotografía nocturna, de paisaje y de vehículos clásicos. Donde la luz cuenta historias."
+author: "José Antonio Tinoco Martín"
+url: "https://tinocomartin.com"
 lang: es
 permalink: /:basename/
 markdown: kramdown
 encoding: utf-8
+
+# Imagen que aparece al compartir la web en WhatsApp, redes, etc.
+imagen_compartir: /assets/portada/portada-1200.jpg
 
 # Relatos de las fotos
 # Pega entre las comillas el enlace CSV de la hoja de Google publicada
 # (Archivo > Compartir > Publicar en la Web > formato CSV).
 # Si se deja vacío, se usa el archivo relatos.csv de este repositorio.
 relatos_url: ""
+
+# Redes sociales (página Contacto y pie de página)
+# Pega el enlace del perfil entre las comillas. Las que estén vacías no se muestran.
+redes:
+  - nombre: Instagram
+    url: ""
+  - nombre: Facebook
+    url: ""
+  - nombre: Flickr
+    url: ""
+  - nombre: 500px
+    url: ""
+
+# Genera automáticamente el mapa del sitio para Google (sitemap.xml)
+plugins:
+  - jekyll-sitemap
 
 # Archivos que Jekyll no publica
 exclude:

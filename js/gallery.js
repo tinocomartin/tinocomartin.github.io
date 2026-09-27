@@ -129,7 +129,9 @@ document.addEventListener("DOMContentLoaded", function () {
           if (d && d.relato) item.classList.add("has-story");
           if (d && d.titulo) {
             var im = item.querySelector("img");
+            var cap = item.querySelector(".gallery-item-title");
             if (im) im.alt = d.titulo;
+            if (cap) cap.textContent = d.titulo;
           }
         });
 

@@ -11,7 +11,12 @@ Sube la imagen a la carpeta de su galería y aparece sola en la web:
 - `assets/paisaje/`
 - `assets/vehiculos/`
 
-Recomendado: JPG sin marco blanco, 2000 px en el lado largo, calidad 80–85 (≈300–500 KB).
+Recomendado: JPG sin marco blanco (el marco se ve en el visor), 2000 px en el lado largo, calidad 80–85 (≈300–500 KB).
+
+## Redes sociales
+
+En `_config.yml`, apartado `redes`, pega el enlace de cada perfil entre las comillas.
+Las que estén vacías no se muestran. Aparecen en la página Contacto y en el pie de página.
 
 ## Añadir relatos a las fotos
 

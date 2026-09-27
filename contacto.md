@@ -2,14 +2,18 @@
 layout: page
 title: Contacto
 permalink: /contacto/
-description: "Cómo ponerte en contacto con José Antonio Tinoco Martín."
+description: "Sigue el trabajo fotográfico de José Antonio Tinoco Martín en redes sociales."
 ---
+{% assign redes = site.redes | where_exp: "r", "r.url != ''" %}
 
-Puedes contactar conmigo a través de:
+{% if redes.size > 0 %}
+<p>Puedes seguir mi trabajo y escribirme a través de mis redes:</p>
 
-- [Correo electrónico](mailto:tinoco.martin@gmail.com)
-- [Teléfono (+34 653 69 45 35)](tel:+34653694535)
-- [Facebook](https://facebook.com)
-- [Instagram](https://instagram.com)
-- [Flickr](https://flickr.com)
-- [500px](https://500px.com)
+<ul class="social-list">
+{%- for r in redes %}
+<li><a href="{{ r.url }}" target="_blank" rel="noopener">{{ r.nombre }}</a></li>
+{%- endfor %}
+</ul>
+{% else %}
+<p>Muy pronto encontrarás aquí los enlaces a mis perfiles en redes sociales, donde podrás seguir mi trabajo y escribirme.</p>
+{% endif %}

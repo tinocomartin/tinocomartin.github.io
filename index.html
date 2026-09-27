@@ -5,32 +5,37 @@ permalink: /
 description: "Portafolio de fotografía nocturna, de paisaje y de vehículos clásicos de José Antonio Tinoco Martín."
 ---
 <section class="hero-section">
-  <img class="hero-image" src="{{ '/assets/portada/portada.jpg' | relative_url }}" alt="Fotografía nocturna de Tinoco">
+  <img class="hero-image"
+       src="{{ '/assets/portada/portada-1200.jpg' | relative_url }}"
+       srcset="{{ '/assets/portada/portada-1200.jpg' | relative_url }} 1200w, {{ '/assets/portada/portada.jpg' | relative_url }} 2400w"
+       sizes="100vw"
+       alt="Fotografía nocturna de José Antonio Tinoco Martín"
+       fetchpriority="high">
   <div class="hero-overlay">
     <h1>Capturando la Luz</h1>
     <p>Donde la luz cuenta historias</p>
   </div>
 </section>
 
-<section class="featured-categories">
+<section class="featured-categories" id="galerias">
   <h2>Galerías</h2>
   <div class="categories-grid">
     <a href="{{ '/nocturna/' | relative_url }}" class="category-card">
-      <img src="{{ '/assets/nocturna/El-Molino.jpg' | relative_url }}" alt="Galería Nocturna">
+      <img src="{{ '/assets/nocturna/El-Molino.jpg' | relative_url }}" alt="" loading="lazy">
       <div class="category-title">
         <h3>Nocturna</h3>
         <p>Ermitas, ruinas y paisajes bajo un cielo estrellado.</p>
       </div>
     </a>
     <a href="{{ '/paisaje/' | relative_url }}" class="category-card">
-      <img src="{{ '/assets/paisaje/Gaztelugatxe%20Tormenta.jpg' | relative_url }}" alt="Galería Paisaje">
+      <img src="{{ '/assets/paisaje/Gaztelugatxe%20Tormenta.jpg' | relative_url }}" alt="" loading="lazy">
       <div class="category-title">
         <h3>Paisaje</h3>
         <p>Niebla, tormenta y luz sobre el territorio.</p>
       </div>
     </a>
     <a href="{{ '/vehiculos/' | relative_url }}" class="category-card">
-      <img src="{{ '/assets/vehiculos/Red%20Car.jpg' | relative_url }}" alt="Galería Vehículos">
+      <img src="{{ '/assets/vehiculos/Red%20Car.jpg' | relative_url }}" alt="" loading="lazy">
       <div class="category-title">
         <h3>Vehículos</h3>
         <p>Clásicos y oxidados, retratados con cariño.</p>

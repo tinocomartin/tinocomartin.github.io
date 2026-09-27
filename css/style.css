@@ -52,14 +52,21 @@ button:focus-visible {
 .site-nav a {
   text-decoration: none;
   color: #666666;
-  margin-left: 2rem;
-  font-size: 0.9rem;
+  margin-left: 1.6rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   transition: color 0.3s ease;
 }
 
-.site-nav a:hover { color: #1a1a1a; }
+.site-nav a:hover,
+.site-nav a[aria-current="page"] { color: #1a1a1a; }
+.site-nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-color: #c9a96b;
+  text-underline-offset: 0.45em;
+  text-decoration-thickness: 1px;
+}
 
 .nav-toggle {
   display: none;
@@ -380,8 +387,8 @@ button:focus-visible {
 .gallery-item.has-story::after {
   content: "Relato";
   position: absolute;
-  left: 0.75rem;
-  bottom: 0.75rem;
+  top: 0.75rem;
+  right: 0.75rem;
   padding: 0.3rem 0.65rem;
   font-size: 0.65rem;
   letter-spacing: 0.16em;
@@ -451,7 +458,9 @@ button:focus-visible {
   height: 40px;
   width: auto;
   margin: 0 auto 0.75rem auto;
-  opacity: 0.8;
+  /* La firma original es blanca (para fondos oscuros): se invierte para verse sobre blanco */
+  filter: invert(1);
+  opacity: 0.55;
 }
 
 /* Respeta la preferencia de movimiento reducido */
@@ -459,13 +468,81 @@ button:focus-visible {
   * { transition: none !important; }
 }
 
+/* ============ Detalles y accesibilidad ============ */
+html { scroll-padding-top: 1rem; }
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 2000;
+  padding: 0.6rem 1rem;
+  background: #1a1a1a;
+  color: #ffffff;
+  text-decoration: none;
+}
+.skip-link:focus { top: 1rem; }
+
+.category-card:focus-visible .category-title { background: rgba(0,0,0,0.45); }
+
+/* Título de la foto sobre la miniatura (al pasar el ratón) */
+.gallery-item-title {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 2.5rem 1rem 0.9rem;
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  color: #ffffff;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  pointer-events: none;
+}
+.gallery-item:hover .gallery-item-title,
+.gallery-item:focus-visible .gallery-item-title { opacity: 1; transform: none; }
+@media (hover: none) { .gallery-item-title { display: none; } }
+
+/* Contacto */
+.social-list { list-style: none; margin-left: 0 !important; }
+.social-list a {
+  font-family: Georgia, serif;
+  font-size: 1.2rem;
+  text-decoration: none;
+  border-bottom: 1px solid #c9a96b;
+}
+.social-list a:hover { color: #8a6d35; }
+
+.footer-social a { color: #777; text-decoration: none; }
+.footer-social a:hover { color: #1a1a1a; }
+.site-footer p { margin: 0 auto 0.4rem; }
+
+/* Página 404 */
+.not-found { text-align: center; padding: 4rem 0 2rem; }
+.not-found-code {
+  font-family: Georgia, serif;
+  font-size: 5rem;
+  line-height: 1;
+  color: #c9a96b;
+  margin: 0 auto 1rem !important;
+}
+.not-found p { margin-left: auto; margin-right: auto; }
+.not-found-links a {
+  display: inline-block;
+  margin: 0 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.85rem;
+  color: #666;
+}
+
 /* ============ Adaptación a móvil ============ */
 @media (max-width: 900px) {
   .categories-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media (max-width: 768px) {
-  .site-header { padding: 1.5rem; }
+@media (max-width: 1100px) {
+  .site-header { padding: 1.5rem 2rem; }
   .nav-toggle { display: flex; }
   .site-nav {
     display: none;
@@ -475,9 +552,14 @@ button:focus-visible {
     flex-direction: column;
     padding: 1rem 1.5rem;
     box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    z-index: 50;
   }
   .site-nav.is-open { display: flex; }
   .site-nav a { margin: 0.6rem 0; }
+}
+
+@media (max-width: 768px) {
+  .site-header { padding: 1.5rem; }
 
   .site-content { padding: 0 1.5rem 2rem 1.5rem; }
 
