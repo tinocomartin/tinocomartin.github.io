@@ -36,3 +36,9 @@ Dónde está la hoja:
 - **Opción B:** el archivo `relatos.csv` de este repositorio (se usa si `relatos_url` está vacío).
 
 Cada foto tiene enlace directo: `https://tinocomartin.com/nocturna/#el-molino`
+
+## Diseño
+
+- Tipografías (alojadas en `assets/fonts/`, licencia OFL): **Cormorant Garamond** para títulos y textos, **Jost** para menú y etiquetas. No usar más.
+- Colores en variables al principio de `css/style.css`. El modo oscuro se activa solo si el dispositivo lo tiene activado.
+- Galerías en filas que respetan la proporción de cada foto (las verticales no se recortan). Las proporciones están en `_data/proporciones.yml`; si falta una foto nueva, la web la calcula sola.

@@ -10,7 +10,8 @@
   <meta name="description" content="{{ page_desc }}">
   <meta name="author" content="{{ site.author }}">
   <link rel="canonical" href="{{ page.url | absolute_url }}">
-  <meta name="theme-color" content="#0c0c0d">
+  <meta name="theme-color" content="#f7f5f0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f0f10" media="(prefers-color-scheme: dark)">
 
   <!-- Vista previa al compartir el enlace (WhatsApp, Facebook, etc.) -->
   <meta property="og:type" content="website">
@@ -27,6 +28,10 @@
   <link rel="apple-touch-icon" href="{{ '/assets/logo/apple-touch-icon.png' | relative_url }}">
   {% if page.precarga %}<link rel="preload" as="image" href="{{ page.precarga | relative_url }}" fetchpriority="high">{% endif %}
 
+  <!-- Tipografías: Cormorant Garamond (títulos y textos) + Jost (menú y etiquetas), alojadas en la web -->
+  <link rel="preload" href="{{ '/assets/fonts/cormorant-garamond-latin-400-normal.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ '/assets/fonts/jost-latin-500-normal.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+
   <link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}">
 </head>
 <body>
@@ -35,7 +40,10 @@
 
 <header class="site-header">
   <div class="logo">
-    <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
+    <a href="{{ '/' | relative_url }}" aria-label="{{ site.title }} — inicio">
+      <span class="logo-title">{{ site.title }}</span>
+      <span class="logo-sub">Tinoco Martín · Fotografía</span>
+    </a>
   </div>
 
   <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-nav">

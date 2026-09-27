@@ -13,10 +13,15 @@ layout: default
 {% endif %}
 
 <section class="gallery-page">
-  <h1>{{ page.title }}</h1>
-  {% if page.description %}<p class="gallery-desc">{{ page.description }}</p>{% endif %}
-
   {% assign photos = site.static_files | where_exp: "f", "f.path contains page.folder" | sort: "name" %}
+
+  <header class="gallery-head">
+    <div>
+      <h1>{{ page.title }}</h1>
+      {% if page.description %}<p class="gallery-desc">{{ page.description }}</p>{% endif %}
+    </div>
+    <span class="eyebrow">{{ photos.size }} fotografías</span>
+  </header>
 
   {% if photos.size == 0 %}
     <p class="gallery-empty">Todavía no hay fotos en esta galería. Sube imágenes a la carpeta
@@ -26,8 +31,10 @@ layout: default
          data-gallery="{{ page.folder | remove: '/assets/' | remove: '/' }}"
          data-relatos="{{ relatos_src }}">
       {% for photo in photos %}
+        {% assign ar = site.data.proporciones[photo.name] | default: 1.5 %}
         <a href="{{ photo.path | relative_url }}"
            class="gallery-item"
+           style="--ar: {{ ar }}"
            data-full="{{ photo.path | relative_url }}"
            data-file="{{ photo.name | escape }}">
           {% assign titulo = photo.basename | replace: '-', ' ' | replace: '_', ' ' | remove: ' copia' | strip %}

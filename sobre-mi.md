@@ -2,11 +2,13 @@
 layout: page
 title: Sobre mí
 permalink: /sobre-mi/
+antetitulo: "El fotógrafo"
+clase: "about"
 description: "Sobre José Antonio Tinoco Martín, fotógrafo autodidacta de paisaje y fotografía nocturna."
 ---
 <div class="about-block">
   <img class="about-portrait" src="{{ '/assets/autor/autor.jpg' | relative_url }}" alt="José Antonio Tinoco Martín">
-  <div class="about-text" markdown="1">
+  <div class="about-text prose" markdown="1">
 
 Me llamo José Antonio Tinoco Martín, aunque la mayoría me conoce simplemente como Tinoco.
 

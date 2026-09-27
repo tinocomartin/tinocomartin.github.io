@@ -279,6 +279,22 @@ document.addEventListener("DOMContentLoaded", function () {
     tx = ty = null;
   }, { passive: true });
 
+  // ---------- Miniaturas: aparición suave y proporción real ----------
+  grid.classList.add("js-fade");
+  items.forEach(function (item) {
+    var im = item.querySelector("img");
+    if (!im) return;
+    function ready() {
+      im.classList.add("is-loaded");
+      if (im.naturalWidth && im.naturalHeight) {
+        item.style.setProperty("--ar", (im.naturalWidth / im.naturalHeight).toFixed(3));
+      }
+    }
+    if (im.complete && im.naturalWidth) ready();
+    else im.addEventListener("load", ready);
+    im.addEventListener("error", function () { im.classList.add("is-loaded"); });
+  });
+
   // ---------- Arranque ----------
 
   loadRelatos();

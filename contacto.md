@@ -2,6 +2,8 @@
 layout: page
 title: Contacto
 permalink: /contacto/
+antetitulo: "En redes"
+clase: "prose is-center"
 description: "Sigue el trabajo fotográfico de José Antonio Tinoco Martín en redes sociales."
 ---
 {% assign redes = site.redes | where_exp: "r", "r.url != ''" %}

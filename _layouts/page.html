@@ -2,6 +2,11 @@
 layout: default
 ---
 <article class="text-page">
-  <h1>{{ page.title }}</h1>
-  {{ content }}
+  <header class="page-head">
+    {% if page.antetitulo %}<span class="eyebrow">{{ page.antetitulo }}</span>{% endif %}
+    <h1>{{ page.title }}</h1>
+  </header>
+  <div class="{{ page.clase | default: 'prose' }}">
+    {{ content }}
+  </div>
 </article>

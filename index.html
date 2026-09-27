@@ -9,7 +9,7 @@ description: "Portafolio de fotografía nocturna, de paisaje y de vehículos cl�
        src="{{ '/assets/portada/portada-1200.jpg' | relative_url }}"
        srcset="{{ '/assets/portada/portada-1200.jpg' | relative_url }} 1200w, {{ '/assets/portada/portada.jpg' | relative_url }} 2400w"
        sizes="100vw"
-       alt="Fotografía nocturna de José Antonio Tinoco Martín"
+       alt="Vía Láctea sobre unas ruinas y un campo de lavanda"
        fetchpriority="high">
   <div class="hero-overlay">
     <h1>Capturando la Luz</h1>
@@ -17,29 +17,32 @@ description: "Portafolio de fotografía nocturna, de paisaje y de vehículos cl�
   </div>
 </section>
 
+<section class="home-quote">
+  <blockquote>Capturar esa luz en medio de la oscuridad es mi manera de encontrar equilibrio.</blockquote>
+  <a class="eyebrow" href="{{ '/fototerapia/' | relative_url }}">Fototerapia</a>
+</section>
+
+{% assign galerias = "nocturna|El-Molino.jpg|Ermitas, ruinas y paisajes bajo un cielo estrellado.|Nocturna;paisaje|Gaztelugatxe%20Tormenta.jpg|Niebla, tormenta y luz sobre el territorio.|Paisaje;vehiculos|Red%20Car.jpg|Clásicos y oxidados, retratados con cariño.|Vehículos" | split: ";" %}
 <section class="featured-categories" id="galerias">
-  <h2>Galerías</h2>
+  <div class="section-head">
+    <h2>Galerías</h2>
+    <span class="eyebrow">{{ galerias.size }} colecciones</span>
+  </div>
   <div class="categories-grid">
-    <a href="{{ '/nocturna/' | relative_url }}" class="category-card">
-      <img src="{{ '/assets/nocturna/El-Molino.jpg' | relative_url }}" alt="" loading="lazy">
-      <div class="category-title">
-        <h3>Nocturna</h3>
-        <p>Ermitas, ruinas y paisajes bajo un cielo estrellado.</p>
-      </div>
-    </a>
-    <a href="{{ '/paisaje/' | relative_url }}" class="category-card">
-      <img src="{{ '/assets/paisaje/Gaztelugatxe%20Tormenta.jpg' | relative_url }}" alt="" loading="lazy">
-      <div class="category-title">
-        <h3>Paisaje</h3>
-        <p>Niebla, tormenta y luz sobre el territorio.</p>
-      </div>
-    </a>
-    <a href="{{ '/vehiculos/' | relative_url }}" class="category-card">
-      <img src="{{ '/assets/vehiculos/Red%20Car.jpg' | relative_url }}" alt="" loading="lazy">
-      <div class="category-title">
-        <h3>Vehículos</h3>
-        <p>Clásicos y oxidados, retratados con cariño.</p>
-      </div>
-    </a>
+    {% for g in galerias %}
+      {% assign d = g | split: "|" %}
+      {% assign carpeta = '/assets/' | append: d[0] | append: '/' %}
+      {% assign fotos = site.static_files | where_exp: "f", "f.path contains carpeta" %}
+      <a href="{{ '/' | append: d[0] | append: '/' | relative_url }}" class="category-card">
+        <div class="category-media">
+          <img src="{{ carpeta | append: d[1] | relative_url }}" alt="" loading="lazy">
+        </div>
+        <div class="category-caption">
+          <h3>{{ d[3] }}</h3>
+          <span class="eyebrow">{{ fotos.size }} fotografías</span>
+          <p>{{ d[2] }}</p>
+        </div>
+      </a>
+    {% endfor %}
   </div>
 </section>

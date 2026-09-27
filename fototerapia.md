@@ -2,6 +2,7 @@
 layout: page
 title: Fototerapia
 permalink: /fototerapia/
+antetitulo: "Más allá de la imagen"
 description: "Reflexiones sobre lo que la fotografía nocturna aporta más allá de la propia imagen."
 ---
 
