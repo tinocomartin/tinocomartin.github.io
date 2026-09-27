@@ -1,6 +1,17 @@
 ---
 layout: default
 ---
+{% comment %}
+  De dónde se leen los relatos:
+  - Si en _config.yml hay un "relatos_url" (enlace CSV de una hoja de Google publicada), se usa ese.
+  - Si no, se usa el archivo relatos.csv de la raíz del repositorio.
+{% endcomment %}
+{% if site.relatos_url and site.relatos_url != "" %}
+  {% assign relatos_src = site.relatos_url %}
+{% else %}
+  {% assign relatos_src = '/relatos.csv' | relative_url %}
+{% endif %}
+
 <section class="gallery-page">
   <h1>{{ page.title }}</h1>
   {% if page.description %}<p class="gallery-desc">{{ page.description }}</p>{% endif %}
@@ -11,27 +22,45 @@ layout: default
     <p class="gallery-empty">Todavía no hay fotos en esta galería. Sube imágenes a la carpeta
       <code>{{ page.folder }}</code> del repositorio y aparecerán aquí automáticamente.</p>
   {% else %}
-    <div class="gallery-grid" id="gallery-grid" data-count="{{ photos.size }}">
+    <div class="gallery-grid" id="gallery-grid"
+         data-gallery="{{ page.folder | remove: '/assets/' | remove: '/' }}"
+         data-relatos="{{ relatos_src }}">
       {% for photo in photos %}
         <a href="{{ photo.path | relative_url }}"
            class="gallery-item"
            data-full="{{ photo.path | relative_url }}"
-           data-caption="{{ photo.basename }}">
-          <img src="{{ photo.path | relative_url }}" alt="{{ photo.basename }} — {{ page.title }}" loading="lazy">
+           data-file="{{ photo.name | escape }}">
+          <img src="{{ photo.path | relative_url }}" alt="{{ photo.basename | escape }} — {{ page.title }}" loading="lazy">
         </a>
       {% endfor %}
     </div>
   {% endif %}
 </section>
 
-<div id="lightbox" class="lightbox" hidden>
-  <button type="button" class="lightbox-close" aria-label="Cerrar visor">&times;</button>
-  <button type="button" class="lightbox-prev" aria-label="Foto anterior">&#10094;</button>
-  <figure class="lightbox-figure">
-    <img class="lightbox-img" src="" alt="">
-    <figcaption class="lightbox-counter"></figcaption>
-  </figure>
-  <button type="button" class="lightbox-next" aria-label="Foto siguiente">&#10095;</button>
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Visor de fotografías" hidden>
+  <div class="lb-bar">
+    <span class="lb-counter" aria-live="polite"></span>
+    <div class="lb-actions">
+      <button type="button" class="lb-toggle" aria-pressed="true" hidden>Ocultar relato</button>
+      <button type="button" class="lb-close" aria-label="Cerrar visor">&times;</button>
+    </div>
+  </div>
+
+  <button type="button" class="lb-nav lb-prev" aria-label="Foto anterior">&#10094;</button>
+  <button type="button" class="lb-nav lb-next" aria-label="Foto siguiente">&#10095;</button>
+
+  <div class="lb-stage">
+    <figure class="lb-photo">
+      <img class="lb-img" src="" alt="">
+      <figcaption class="lb-caption"></figcaption>
+    </figure>
+
+    <aside class="lb-story" aria-label="Relato de la fotografía">
+      <p class="lb-meta"></p>
+      <h2 class="lb-title"></h2>
+      <div class="lb-text"></div>
+    </aside>
+  </div>
 </div>
 
 <script src="{{ '/js/gallery.js' | relative_url }}" defer></script>

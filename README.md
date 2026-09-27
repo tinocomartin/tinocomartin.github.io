@@ -1,18 +1,33 @@
-
 # Capturando la Luz
 
-Blog fotográfico profesional para GitHub Pages.
+Web de fotografía de José Antonio Tinoco Martín — https://tinocomartin.com
+Hecha con Jekyll y publicada con GitHub Pages (dominio gestionado en Cloudflare).
 
-## Publicación
+## Añadir fotos
 
-1. Crear repositorio en GitHub llamado:
-   tinocomartin.github.io
+Sube la imagen a la carpeta de su galería y aparece sola en la web:
 
-2. Subir todos los archivos.
+- `assets/nocturna/`
+- `assets/paisaje/`
+- `assets/vehiculos/`
 
-3. Activar GitHub Pages.
+Recomendado: JPG sin marco blanco, 2000 px en el lado largo, calidad 80–85 (≈300–500 KB).
 
-4. En la raíz crear fichero CNAME con:
-   tinocomartin.com
+## Añadir relatos a las fotos
 
-5. Configurar DNS en Cloudflare.
+Los relatos se leen de una hoja de cálculo con estas columnas:
+
+| galeria | archivo | titulo | lugar | fecha | relato |
+|---|---|---|---|---|---|
+| nocturna | El-Molino.jpg | El Molino | Consuegra, Toledo | Agosto 2024 | Texto… |
+
+- `archivo` tiene que coincidir con el nombre de la foto (da igual mayúsculas, tildes o la extensión).
+- Todo lo demás es opcional. Sin relato, la foto se ve sola a pantalla completa.
+- Para separar párrafos, deja una línea en blanco dentro de la celda (Alt+Intro / Cmd+Intro).
+
+Dónde está la hoja:
+
+- **Opción A (sin tocar GitHub):** una hoja de Google publicada como CSV. Su enlace va en `relatos_url` dentro de `_config.yml`.
+- **Opción B:** el archivo `relatos.csv` de este repositorio (se usa si `relatos_url` está vacío).
+
+Cada foto tiene enlace directo: `https://tinocomartin.com/nocturna/#el-molino`

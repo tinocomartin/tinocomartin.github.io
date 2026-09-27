@@ -5,6 +5,12 @@ permalink: /:basename/
 markdown: kramdown
 encoding: utf-8
 
-# Le dice a Jekyll que ignore este archivo al construir la web
+# Relatos de las fotos
+# Pega entre las comillas el enlace CSV de la hoja de Google publicada
+# (Archivo > Compartir > Publicar en la Web > formato CSV).
+# Si se deja vacío, se usa el archivo relatos.csv de este repositorio.
+relatos_url: ""
+
+# Archivos que Jekyll no publica
 exclude:
   - README.md
