@@ -58,7 +58,8 @@ document.addEventListener("DOMContentLoaded", function () {
       .replace(/\bcopia\b/gi, "")
       .replace(/[_-]+/g, " ")
       .replace(/\s+/g, " ")
-      .trim();
+      .trim()
+      .replace(/^./, function (c) { return c.toUpperCase(); });
   }
 
   // Identificador para el enlace directo (#el-molino)
