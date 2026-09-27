@@ -232,7 +232,6 @@ button:focus-visible {
 .hero-overlay h1 {
   font-size: clamp(2.6rem, 6vw, 4.6rem);
   font-weight: 400;
-  font-style: italic;
   line-height: 1;
   margin-bottom: 0.9rem;
 }
@@ -250,6 +249,7 @@ button:focus-visible {
   margin: clamp(4rem, 9vw, 7rem) auto;
   text-align: center;
 }
+/* La única cursiva de la web: la cita de la portada */
 .home-quote blockquote {
   font-family: var(--serif);
   font-style: italic;
@@ -321,7 +321,6 @@ button:focus-visible {
   width: 100%;
   margin-top: 0.3rem;
   font-family: var(--serif);
-  font-style: italic;
   font-size: 0.98rem;
   color: var(--ink-soft);
 }
@@ -365,7 +364,6 @@ button:focus-visible {
   color: var(--accent);
 }
 .prose h2 {
-  font-style: italic;
   font-size: 1.9rem;
   text-align: center;
   margin: 2.6rem 0 0;
@@ -404,7 +402,6 @@ button:focus-visible {
 }
 .about-text p { margin-bottom: 1.15em; }
 .about-text p:last-child {
-  font-style: italic;
   color: var(--accent);
 }
 
@@ -438,13 +435,12 @@ button:focus-visible {
 .gallery-head h1 { font-size: clamp(2.6rem, 5vw, 3.8rem); }
 .gallery-desc {
   font-family: var(--serif);
-  font-style: italic;
   font-size: 1.08rem;
   color: var(--ink-soft);
   max-width: 34rem;
   margin-top: 0.5rem;
 }
-.gallery-empty { color: var(--muted); font-style: italic; }
+.gallery-empty { color: var(--muted); }
 
 /* Filas justificadas: cada foto conserva su proporción (verticales enteras) */
 .gallery-grid {
@@ -525,7 +521,6 @@ button:focus-visible {
 .not-found { text-align: center; padding: 4rem 0 2rem; }
 .not-found .not-found-code {
   font-family: var(--serif);
-  font-style: italic;
   font-size: 6rem;
   line-height: 1;
   color: var(--accent);
@@ -654,7 +649,6 @@ button:focus-visible {
 .lb-caption {
   margin-top: 1rem;
   font-family: var(--serif);
-  font-style: italic;
   font-size: 1rem;
   color: var(--lb-soft);
   text-align: center;
