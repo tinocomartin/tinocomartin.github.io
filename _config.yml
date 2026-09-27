@@ -20,12 +20,14 @@ relatos_url: ""
 # Pega el enlace del perfil entre las comillas. Las que estén vacías no se muestran.
 redes:
   - nombre: Instagram
-    url: ""
+    url: "https://www.instagram.com/tinoco.martin/"
   - nombre: Facebook
-    url: ""
+    url: "https://www.facebook.com/profile.php?id=100000113164973"
   - nombre: Flickr
-    url: ""
+    url: "https://www.flickr.com/photos/186304085@N08/"
   - nombre: 500px
+    url: "https://500px.com/p/tinocomartin"
+  - nombre: Subexpuesta
     url: ""
 
 # Genera automáticamente el mapa del sitio para Google (sitemap.xml)
