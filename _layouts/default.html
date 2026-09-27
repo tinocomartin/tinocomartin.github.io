@@ -31,7 +31,7 @@
   <!-- Tipografías: Didot / Bodoni Moda (títulos y textos) + Jost (menú y etiquetas), alojadas en la web -->
   <link rel="preload" href="{{ '/assets/fonts/jost-latin-500-normal.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
 
-  <link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}?v={{ site.time | date: '%s' }}">
 </head>
 <body>
 
@@ -73,6 +73,6 @@
   <p>&copy; {{ site.time | date: "%Y" }} {{ site.author }} · Todos los derechos reservados.</p>
 </footer>
 
-<script src="{{ '/js/nav.js' | relative_url }}" defer></script>
+<script src="{{ '/js/nav.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
 </body>
 </html>
