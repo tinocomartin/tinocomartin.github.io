@@ -3,8 +3,7 @@ backend:
   repo: tinocomartin/tinocomartin.github.io
   branch: main
   # Dirección del "Worker" de Cloudflare que gestiona el inicio de sesión con GitHub.
-  # Se rellena al final, siguiendo las INSTRUCCIONES-PANEL.md
-  base_url: https://PON-AQUI-TU-WORKER.workers.dev
+  base_url: https://sveltia-cms-auth.tinoco-martin.workers.dev
 
 locale: es
 site_url: https://tinocomartin.com
