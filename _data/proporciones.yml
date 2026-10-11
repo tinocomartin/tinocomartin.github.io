@@ -1,121 +1,139 @@
 # Proporción ancho/alto de cada foto (la usa la galería para no recortar).
 # Si falta una foto nueva, la web la calcula sola al cargar.
-"Aerodromo-Somosierra.jpg": 1.480
-"Burgos-Noche.jpg": 1.497
-"Caseron-de-los-disparos.jpg": 1.497
-"El Abrazo.jpg": 0.667
-"El-Molino.jpg": 1.450
-"El-Monje.jpg": 1.463
-"Ermita Buendia.jpg": 1.497
-"Ermita Colmenarejo.jpg": 1.497
-"Ermita Desagravio.jpg": 1.497
-"Ermita Estrella.jpg": 1.497
-"Ermita S. Agustin.jpg": 1.497
-"Ermita S. Ana.jpg": 1.480
-"Ermita S. Antonio.jpg": 1.497
-"Ermita Segoviana.jpg": 1.460
-"Ermita Verde.jpg": 0.703
-"Ermita-de-Valdecarabanos.jpg": 0.663
-"Ermita-del-Buen-Aire.jpg": 1.497
-"HORNOS.jpg": 1.507
-"Iglesia Tumbas.jpg": 1.497
-"Iglesia Vergalijo.jpg": 0.687
-"Iglesia de los Canes.jpg": 1.497
-"Iglesia-Manchega.jpg": 1.477
-"LOYOLA REFLEJOS.jpg": 0.687
-"La Gramedosa.jpg": 1.497
-"Lavanda Arco Ruinas.jpg": 1.503
-"MIrador de la Gitana.jpg": 0.667
-"MIrador-de-los-Robledos.jpg": 0.667
-"Memorial.jpg": 0.667
-"Noche-entre-Alacranes.jpg": 1.460
-"Piramide-de-los-Italianos.jpg": 1.497
-"Puente Viejo.jpg": 0.680
-"Puerto-del- Pico.jpg": 0.667
-"RIOSECO.jpg": 1.497
-"Rayos Mundaka.jpg": 1.463
-"San Illan.jpg": 1.497
-"San Isidro.jpg": 1.497
-"Santa-Maria-de-la-Hoz.jpg": 1.427
-"Sorguinetxe.jpg": 1.517
-"Speed copia.jpg": 0.707
-"Toledo Luna.jpg": 1.443
-"Torreon de los Viñedos.jpg": 1.450
-"blockaus-13.jpg": 1.497
-"bunker-alamedilla.jpg": 1.477
-"crucero-urkiola.jpg": 0.667
-"el-cruzado.jpg": 1.497
-"el-viejo-saloon.jpg": 1.480
-"rolling-stones.jpg": 0.667
-"tormenta-en-santa-ana.jpg": 0.650
-"Alcazar Toledo Niebla.jpg": 1.497
-"Almudena.jpg": 1.513
-"Atienza.jpg": 0.680
-"Barrancas Burujon.jpg": 1.503
-"Barrika.jpg": 1.497
-"Bosque Encantado.jpg": 1.497
-"Cola De Dragón II.jpg": 1.463
-"Cola de dragon.jpg": 1.517
-"Cuento Segoviano.jpg": 1.465
-"Dragón copia.jpg": 1.507
-"EL ATAZAR.jpg": 1.498
-"Gaztelugatxe Tormenta.jpg": 1.497
-"Gorrondatxe Ocaso.jpg": 1.495
-"LOZOYA.jpg": 1.497
-"Lavanda Ocaso.jpg": 1.497
-"Madrid.jpg": 1.498
-"Meñakoz.jpg": 1.512
-"Molinos.jpg": 1.503
-"Nervión V copia.jpg": 0.650
-"Nieblas Toledo.jpg": 1.450
-"Otzarreta.jpg": 1.477
-"Pagoda.jpg": 1.497
-"Pano Toledo Niebla.jpg": 1.852
-"Panorama Hoces.jpg": 1.773
-"Puente de frias.jpg": 1.497
-"San Juan de Gaztelugatxe.jpg": 1.517
-"Sunset.jpg": 0.680
-"TOLEDO NIEBLA II.jpg": 1.503
-"Trenes.jpg": 0.683
-"2 CV Chumbero.jpg": 1.503
-"600 Azul.jpg": 1.497
-"Autos Locos.jpg": 1.500
-"Camion.jpg": 1.413
-"Chrysler Red.jpg": 1.450
-"Cirila Toledana.jpg": 1.493
-"Citroen.jpg": 0.713
-"Clásico Palmero.jpg": 1.410
-"Cuentame.jpg": 1.493
-"Dogge.jpg": 1.487
-"Dyane 6.jpg": 1.503
-"El Ebro de Maxi.jpg": 0.713
-"El Tuerto.jpg": 0.683
-"En Marcha.jpg": 1.513
-"Entre Vacas.jpg": 1.497
-"Ford Capri.jpg": 1.497
-"Ford Granada.jpg": 1.497
-"Furgoneta Verde.jpg": 0.690
-"Land Rover Vasco.jpg": 1.443
-"MAN.jpg": 1.447
-"Morris II.jpg": 1.460
-"Morris.jpg": 1.503
-"No es Pais para Viejos.jpg": 1.490
-"Ojos Saltones.jpg": 1.430
-"Pelotilla II.jpg": 1.440
-"Pelotilla.jpg": 1.497
-"R9.jpg": 1.477
-"Red Car.jpg": 0.667
-"Ruso Rojo.jpg": 1.497
-"Seat 1400.jpg": 1.493
-"Seat de Manolo.jpg": 1.487
-"Suzuki.jpg": 1.447
-"TANQUE.jpg": 1.510
-"Tanque Circumpolar.jpg": 1.497
-"Tractor Azul .jpg": 1.497
-"Tractor Manchego.jpg": 1.497
-"Tractor Verde.jpg": 1.470
-"Tractor de los Ajos.jpg": 0.700
-"Tractor.jpg": 0.667
-"Vallisoletana.jpg": 1.430
-"Willy.jpg": 1.450
-"upscalemedia-transformed copia.jpg": 0.690
+
+"4 TORRES.webp": 0.704
+"850 DE ANTONIO.webp": 1.433
+"A VUELTAS CON LAS GUERRAS.webp": 1.499
+"ALCAZAR ENTRE LA NIEBLA.webp": 1.499
+"ATARDECER ALCARREÑO.webp": 1.499
+"ATIENZA.webp": 0.681
+"BLOCKHAUS 13.webp": 1.499
+"BUNKER ALAMEDILLA.webp": 1.479
+"CAMIÓN QUIJORNA.webp": 1.416
+"CAMPO REAL.webp": 0.679
+"CANTO DEL PICO.webp": 1.504
+"CASERÓN DE LOS DISPAROS.webp": 1.499
+"CASTILLO DE ALMONACID.webp": 1.429
+"CASTILLO DE CAUDILLA.webp": 0.667
+"CATEDRAL DE LA ALMUDENA.webp": 1.514
+"CERRO CALDERICO.webp": 1.504
+"CERRO DE LOS ÁNGELES.webp": 0.698
+"CHRISLER RED.webp": 1.451
+"CIRCULO MEGALITICO .webp": 1.499
+"CIRCUMPOLAR EN MELQUE.webp": 0.667
+"CLÁSICO ABANDONADO II.webp": 1.499
+"CLÁSICO ABANDONADO.webp": 1.443
+"CLÁSICO EN PRIMAVERA.webp": 1.494
+"COLA DE DRAGÓN.webp": 1.517
+"CRUCERO URKIOLA.webp": 0.667
+"CUÉNTAME.webp": 1.496
+"DESPOBLADO MANCHEGO.webp": 1.48
+"DRAGÓN DE ITXINA.webp": 1.508
+"DYANE 6.webp": 1.504
+"EBRO 160 D.webp": 0.714
+"EL 600 DE GLORIA.webp": 1.499
+"EL ABRAZO.webp": 0.667
+"EL AUTO DEL BODEGUERO.webp": 1.411
+"EL BOSQUE ENCANTADO.webp": 1.499
+"EL COLMENARETE.webp": 1.504
+"EL EBRO JUBILADO.webp": 0.668
+"EL JUBILADO MAN.webp": 1.45
+"EL MOLAREÑO.webp": 0.667
+"EL MOLINO .webp": 0.667
+"EL MONJE.webp": 1.464
+"EL OXFORD DEL ESPINAR.webp": 1.463
+"EL OXFORD SEGOVIANO.webp": 1.504
+"EL REFUGIO DEL VAQUERO.webp": 1.499
+"EL RUSO.webp": 1.499
+"EL SEAT DE MANOLO.webp": 1.49
+"EL SEAT EN LA ERA.webp": 1.496
+"EL TEMPLARIO.webp": 1.499
+"EL TOBOSO.webp": 0.7
+"EL TRACTOR DE LOS AJOS.webp": 0.7
+"EL TUERTO.webp": 0.685
+"EL VIEJO AERÓDROMO.webp": 1.48
+"EL VIEJO CAPRI.webp": 1.499
+"EL VIEJO LABRADOR.webp": 0.693
+"ENCARAMADA EN EL RISCO.webp": 0.691
+"ENTRE CHUMBERAS.webp": 1.504
+"ERMITA DE BUENDIA.webp": 1.498
+"ERMITA DE LA SOLEDAD.webp": 1.499
+"ERMITA DE LOS VIÑEDOS.webp": 0.705
+"ERMITA DE S. AGUSTÍN.webp": 1.499
+"ERMITA DE S. ANTONIO.webp": 1.499
+"ERMITA DE SAN ILLÁN.webp": 1.499
+"ERMITA DEL BUEN AIRE.webp": 1.499
+"ERMITA DEL DESAGRAVIO.webp": 1.499
+"ESTRELLA.webp": 1.497
+"FIN DE JORNADA.webp": 1.499
+"FORD GRANADA.webp": 1.499
+"GORRONDATXE.webp": 1.512
+"HOCES DEL DURATÓN.webp": 1.774
+"HORNOS DE HIERRO.webp": 1.508
+"IGLESIA DE LAS TUMBAS.webp": 1.499
+"IGLESIA DE LOS CANES.webp": 1.497
+"LA ERMITA DE LOS POSESOS.webp": 1.499
+"LA ESTACIÓN.webp": 0.683
+"LA GRAMEDOSA.webp": 1.45
+"LA HACIENDA.webp": 1.461
+"LA TUMBA DE VERGALIJO.webp": 0.688
+"LA VALLISOLETANA.webp": 1.431
+"LA VIEJA HACIENDA.webp": 1.452
+"LAND ROVER VASCO.webp": 1.446
+"LUCES DE CIUDAD.webp": 1.499
+"MEANDRO DEL MELERO.webp": 1.458
+"MEGALITO DEL DRAGÓN.webp": 1.499
+"MICROMACHINE.webp": 1.5
+"MILENIOS.webp": 0.687
+"MIRADOR DE LA GITANA.webp": 0.667
+"MIRADOR DE LA MEMORIA.webp": 0.667
+"MISA DE NOCHE.webp": 1.499
+"MOLINO DE DONOSTI.webp": 1.453
+"MOLINOS DE CONSUEGRA.webp": 1.476
+"MONASTERIO DE RIOSECO.webp": 1.499
+"MONUMENTO Y VÍA.webp": 0.667
+"MORDISCO A LA VÍA.webp": 0.706
+"NIEBLA CATEDRAL TOLEDO.webp": 1.451
+"NO ES PAIS PARA VIEJOS.webp": 1.494
+"NO TO WAR.webp": 1.511
+"NOCHE ENTRE ALACRANES.webp": 1.463
+"NOCHE MANCHEGA.webp": 1.492
+"OBSERVATORIO DE LOS ROBLEDOS.webp": 0.667
+"OJITOS SALTONES.webp": 0.715
+"OLD SALOON.webp": 1.48
+"ORACIÓN NOCTURNA.webp": 1.499
+"OTZARRETA.webp": 1.504
+"PAGODA.webp": 1.499
+"PALACIO DE ARANJUEZ.webp": 1.527
+"PEREGRINAJE NOCTURNO.webp": 1.473
+"PIRÁMIDE DE LOS ITALIANOS.webp": 1.499
+"PRESA DEL PRADILLO.webp": 1.612
+"PUENTE RIO PUSA.webp": 0.682
+"PUERTO DEL PICO.webp": 1.44
+"RENAULT 9.webp": 1.479
+"ROMÁNICO SEGOVIANO.webp": 1.462
+"RUTA TOLEDO.webp": 1.514
+"RÍO CUERVO.webp": 0.665
+"SALTO DEL NERVIÓN.webp": 0.65
+"SAN ISIDRO LABRADOR.webp": 1.499
+"SAN JUAN DE GAZTELUGATXE.webp": 1.518
+"SANTA ANA, EL TOBOSO.webp": 0.653
+"SANTA LUCIA DE MENDEXA.webp": 0.667
+"SANTA MARIA DE MELQUE.webp": 1.456
+"SANTUARIO DE LOYOLA.webp": 0.688
+"SEDAS.webp": 1.499
+"SOL P. MENDIBIL copia.webp": 0.72
+"SPEED.webp": 0.707
+"SUNSET.webp": 1.527
+"THE STAR SOLDIER.webp": 0.697
+"TOBERA.webp": 1.429
+"TOLEDO EN INVIERNO.webp": 1.504
+"TORMENTA .webp": 1.499
+"UN CLÁSICO TOLEDANOa.webp": 1.5
+"UN CUENTO EN SEGOVIA.webp": 1.468
+"URBAN WAR.webp": 1.504
+"VERDE SEGOVIANO.webp": 1.473
+"VILLARES DEL SAZ.webp": 1.492
+"VILLASECA DE LA SAGRA.webp": 1.504
+"VOCES EN LA NOCHE.webp": 0.667
+"WILLY.webp": 1.453

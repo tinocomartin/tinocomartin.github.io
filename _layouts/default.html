@@ -49,7 +49,7 @@
     <span></span><span></span><span></span>
   </button>
 
-  {% assign menu = "/|Inicio,/nocturna/|Nocturna,/paisaje/|Paisaje,/vehiculos/|Vehículos,/fototerapia/|Fototerapia,/sobre-mi/|Sobre mí,/contacto/|Contacto" | split: "," %}
+  {% assign menu = "/|Inicio,/nocturna/|Nocturna,/paisaje/|Paisaje,/vehiculos/|Vehículos,/fototerapia/|Fototerapia,/blog/|Blog,/sobre-mi/|Sobre mí,/contacto/|Contacto" | split: "," %}
   <nav class="site-nav" id="site-nav" aria-label="Menú principal">
     {% for entrada in menu %}
       {% assign partes = entrada | split: "|" %}

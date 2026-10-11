@@ -2,9 +2,9 @@
 // Visor de imágenes (lightbox) con relatos
 // ------------------------------------------------------------
 // - Funciona con cualquier galería que use el layout "gallery".
-// - Los relatos se leen de una hoja de cálculo (CSV): una fila por foto.
-//   Columnas: galeria, archivo, titulo, lugar, fecha, relato
-//   Solo "archivo" es obligatoria; el resto puede quedar vacío.
+// - Los textos (título, lugar, fecha, relato) se gestionan de forma
+//   visual desde /admin/ y llegan ya listos en cada miniatura
+//   (atributos data-titulo, data-lugar, data-fecha, data-relato).
 // - No hace falta tocar este archivo al añadir fotos o relatos.
 // ============================================================
 document.addEventListener("DOMContentLoaded", function () {
@@ -14,9 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var items = Array.prototype.slice.call(grid.querySelectorAll(".gallery-item"));
   if (items.length === 0) return;
-
-  var galleryName = norm(grid.getAttribute("data-gallery"));
-  var relatosUrl = grid.getAttribute("data-relatos");
 
   var el = {
     img: lightbox.querySelector(".lb-img"),
@@ -33,38 +30,20 @@ document.addEventListener("DOMContentLoaded", function () {
     text: lightbox.querySelector(".lb-text")
   };
 
-  var relatos = {};          // archivo normalizado -> { titulo, lugar, fecha, relato }
   var currentIndex = 0;
   var lastFocused = null;
   var storyHidden = readPref();
 
   // ---------- Utilidades ----------
 
-  // Normaliza para comparar nombres: minúsculas, sin tildes, sin extensión, sin espacios sobrantes
-  function norm(s) {
-    return (s || "")
+  function slug(file) {
+    return (file || "")
       .toString()
-      .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      .normalize("NFD").replace(/[̀-ͯ]/g, "")
       .toLowerCase()
       .replace(/\.(jpe?g|png|webp|gif|tiff?)$/i, "")
-      .replace(/[\s_-]+/g, " ")
-      .trim();
-  }
-
-  // Título legible a partir del nombre de archivo (si no hay título en la hoja)
-  function titleFromFile(file) {
-    return (file || "")
-      .replace(/\.[^.]+$/, "")
-      .replace(/\bcopia\b/gi, "")
-      .replace(/[_-]+/g, " ")
-      .replace(/\s+/g, " ")
-      .trim()
-      .replace(/^./, function (c) { return c.toUpperCase(); });
-  }
-
-  // Identificador para el enlace directo (#el-molino)
-  function slug(file) {
-    return norm(file).replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "");
   }
 
   function readPref() {
@@ -74,90 +53,22 @@ document.addEventListener("DOMContentLoaded", function () {
     try { localStorage.setItem("lb-story-hidden", v ? "1" : "0"); } catch (e) {}
   }
 
-  // Lector CSV (admite comillas, comas y saltos de línea dentro del relato)
-  function parseCSV(text) {
-    var rows = [], row = [], field = "", inQuotes = false, i, c;
-    text = text.replace(/^\uFEFF/, "");
-    // Excel en español guarda los CSV con ";" en lugar de ","
-    var firstLine = text.split("\n")[0];
-    var sep = firstLine.indexOf(";") > -1 && firstLine.indexOf(",") === -1 ? ";" : ",";
-    for (i = 0; i < text.length; i++) {
-      c = text[i];
-      if (inQuotes) {
-        if (c === '"') {
-          if (text[i + 1] === '"') { field += '"'; i++; }
-          else { inQuotes = false; }
-        } else { field += c; }
-      } else if (c === '"') { inQuotes = true; }
-      else if (c === sep) { row.push(field); field = ""; }
-      else if (c === "\n") { row.push(field); rows.push(row); row = []; field = ""; }
-      else if (c === "\r") { /* ignorar */ }
-      else { field += c; }
-    }
-    if (field !== "" || row.length) { row.push(field); rows.push(row); }
-    return rows;
-  }
-
-  function loadRelatos() {
-    if (!relatosUrl || !window.fetch) return;
-    fetch(relatosUrl, { cache: "no-cache" })
-      .then(function (r) { return r.ok ? r.text() : ""; })
-      .then(function (text) {
-        if (!text) return;
-        var rows = parseCSV(text);
-        if (rows.length < 2) return;
-        var head = rows[0].map(norm);
-        var col = function (name) { return head.indexOf(name); };
-        var cG = col("galeria"), cA = col("archivo"), cT = col("titulo"),
-            cL = col("lugar"), cF = col("fecha"), cR = col("relato");
-        if (cA < 0) return;
-
-        rows.slice(1).forEach(function (r) {
-          var file = norm(r[cA]);
-          if (!file) return;
-          if (cG >= 0 && r[cG] && norm(r[cG]) !== galleryName) return; // es de otra galería
-          relatos[file] = {
-            titulo: cT >= 0 ? (r[cT] || "").trim() : "",
-            lugar: cL >= 0 ? (r[cL] || "").trim() : "",
-            fecha: cF >= 0 ? (r[cF] || "").trim() : "",
-            relato: cR >= 0 ? (r[cR] || "").trim() : ""
-          };
-        });
-
-        // Marca en la cuadrícula las fotos que tienen relato
-        items.forEach(function (item) {
-          var d = relatos[norm(item.getAttribute("data-file"))];
-          if (d && d.relato) item.classList.add("has-story");
-          if (d && d.titulo) {
-            var im = item.querySelector("img");
-            var cap = item.querySelector(".gallery-item-title");
-            if (im) im.alt = d.titulo;
-            if (cap) cap.textContent = d.titulo;
-          }
-        });
-
-        if (!lightbox.hidden) render(currentIndex);
-      })
-      .catch(function () { /* sin relatos: el visor funciona igual */ });
-  }
-
   // ---------- Pintado del visor ----------
 
   function dataFor(item) {
-    var file = item.getAttribute("data-file");
-    var d = relatos[norm(file)] || {};
     return {
-      file: file,
-      titulo: d.titulo || titleFromFile(file),
-      lugar: d.lugar || "",
-      fecha: d.fecha || "",
-      relato: d.relato || ""
+      file: item.getAttribute("data-file"),
+      titulo: item.getAttribute("data-titulo") || "",
+      lugar: item.getAttribute("data-lugar") || "",
+      fecha: item.getAttribute("data-fecha") || "",
+      relato: item.getAttribute("data-relato") || ""
     };
   }
 
   function fillText(container, text) {
     container.textContent = "";
     text.split(/\n\s*\n/).forEach(function (para) {
+      if (!para.trim()) return;
       var p = document.createElement("p");
       para.split("\n").forEach(function (line, i) {
         if (i) p.appendChild(document.createElement("br"));
@@ -172,7 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
     var d = dataFor(item);
     var hasStory = !!d.relato;
 
-    // Imagen con fundido suave
     lightbox.classList.add("is-loading");
     var src = item.getAttribute("data-full");
     el.img.onload = function () { lightbox.classList.remove("is-loading"); };
@@ -196,7 +106,6 @@ document.addEventListener("DOMContentLoaded", function () {
     el.toggle.textContent = storyHidden ? "Leer relato" : "Ocultar relato";
     el.toggle.setAttribute("aria-pressed", storyHidden ? "false" : "true");
 
-    // Precarga de la anterior y la siguiente
     [index - 1, index + 1].forEach(function (i) {
       var it = items[(i + items.length) % items.length];
       var pre = new Image();
@@ -250,12 +159,10 @@ document.addEventListener("DOMContentLoaded", function () {
     render(currentIndex);
   });
 
-  // Cerrar al hacer clic en el fondo oscuro
   lightbox.addEventListener("click", function (e) {
     if (e.target === lightbox || e.target === el.stage || e.target.classList.contains("lb-photo")) close();
   });
 
-  // Teclado
   document.addEventListener("keydown", function (e) {
     if (lightbox.hidden) return;
     if (e.key === "Escape") close();
@@ -263,7 +170,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (e.key === "ArrowRight") show(currentIndex + 1);
   });
 
-  // Deslizar con el dedo (solo gestos claramente horizontales, para no molestar al leer)
   var tx = null, ty = null;
   lightbox.addEventListener("touchstart", function (e) {
     tx = e.changedTouches[0].clientX;
@@ -297,9 +203,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // ---------- Arranque ----------
 
-  loadRelatos();
-
-  // Enlace directo a una foto: /nocturna/#el-molino
   if (location.hash.length > 1) {
     var wanted = decodeURIComponent(location.hash.slice(1));
     for (var i = 0; i < items.length; i++) {

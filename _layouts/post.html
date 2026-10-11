@@ -1,0 +1,28 @@
+---
+layout: default
+---
+<article class="text-page blog-post">
+  <header class="page-head">
+    <span class="eyebrow">{{ page.date | date: "%-d de %B de %Y" }}</span>
+    <h1>{{ page.title }}</h1>
+  </header>
+
+  {% if page.imagen %}
+    <img class="blog-post-cover" src="{{ page.imagen | relative_url }}" alt="{{ page.title | escape }}">
+  {% endif %}
+
+  <div class="prose" markdown="1">
+{{ content }}
+  </div>
+
+  {% if page.pagina_relacionada and page.pagina_relacionada != "" %}
+    {% assign related_page = site.pages | where: "url", page.pagina_relacionada | first %}
+    <p class="blog-post-related">
+      <a href="{{ page.pagina_relacionada | relative_url }}">
+        Ver también: {{ related_page.title | default: "esta página" }} →
+      </a>
+    </p>
+  {% endif %}
+
+  <p class="blog-post-back"><a href="{{ '/blog/' | relative_url }}">← Volver al blog</a></p>
+</article>

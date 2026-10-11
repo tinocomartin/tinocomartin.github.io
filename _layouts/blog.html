@@ -1,0 +1,30 @@
+---
+layout: default
+---
+<section class="blog-index">
+  <header class="page-head">
+    <span class="eyebrow">Blog</span>
+    <h1>{{ page.title }}</h1>
+    {% if page.description %}<p class="gallery-desc">{{ page.description }}</p>{% endif %}
+  </header>
+
+  {% assign posts = site.posts %}
+  {% if posts.size == 0 %}
+    <p class="gallery-empty">Todavía no hay entradas en el blog. Se crean desde el panel /admin/.</p>
+  {% else %}
+    <div class="blog-grid">
+      {% for post in posts %}
+        <a class="blog-card" href="{{ post.url | relative_url }}">
+          {% if post.imagen %}<img src="{{ post.imagen | relative_url }}" alt="" loading="lazy">{% endif %}
+          <div class="blog-card-body">
+            <span class="eyebrow">{{ post.date | date: "%-d de %B de %Y" }}</span>
+            <h3>{{ post.title }}</h3>
+            {% if post.excerpt and post.excerpt != "" %}
+              <p>{{ post.excerpt | strip_html | truncatewords: 28 }}</p>
+            {% endif %}
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  {% endif %}
+</section>
