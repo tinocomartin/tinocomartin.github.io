@@ -13,11 +13,13 @@ layout: default
     <p class="gallery-empty">Todavía no hay entradas en el blog. Se crean desde el panel /admin/.</p>
   {% else %}
     <div class="blog-grid">
+      {% assign meses = "enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre" | split: "," %}
       {% for post in posts %}
+        {% assign mes_num = post.date | date: "%-m" | minus: 1 %}
         <a class="blog-card" href="{{ post.url | relative_url }}">
           {% if post.imagen %}<img src="{{ post.imagen | relative_url }}" alt="" loading="lazy">{% endif %}
           <div class="blog-card-body">
-            <span class="eyebrow">{{ post.date | date: "%-d de %B de %Y" }}</span>
+            <span class="eyebrow">{{ post.date | date: "%-d" }} de {{ meses[mes_num] }} de {{ post.date | date: "%Y" }}</span>
             <h3>{{ post.title }}</h3>
             {% if post.excerpt and post.excerpt != "" %}
               <p>{{ post.excerpt | strip_html | truncatewords: 28 }}</p>
