@@ -1,0 +1,82 @@
+# Crea automáticamente una miniatura ligera de cada foto de las galerías.
+# - Se ejecuta sola cada vez que se añaden, cambian o borran fotos (con Sveltia, GitHub Desktop o la web de GitHub).
+# - También se puede lanzar a mano: pestaña "Actions" > "Miniaturas de galerías" > "Run workflow".
+# Las miniaturas se guardan en assets/thumbs/<galería>/<foto>.jpg
+name: Miniaturas de galerías
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "assets/nocturna/**"
+      - "assets/paisaje/**"
+      - "assets/vehiculos/**"
+      - "assets/fototerapia/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: miniaturas
+  cancel-in-progress: false
+
+jobs:
+  miniaturas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalar ImageMagick
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq imagemagick
+
+      - name: Crear y limpiar miniaturas
+        run: |
+          set -eu
+          IM=$(command -v magick || command -v convert)
+          LADO=1000       # lado largo de la miniatura, en píxeles
+          CALIDAD=82
+
+          for gal in nocturna paisaje vehiculos fototerapia; do
+            [ -d "assets/$gal" ] || continue
+            mkdir -p "assets/thumbs/$gal"
+
+            # 1) Crear las miniaturas que faltan
+            find "assets/$gal" -maxdepth 1 -type f \
+              \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' -o -iname '*.gif' -o -iname '*.tif' -o -iname '*.tiff' \) \
+              -print0 | while IFS= read -r -d '' f; do
+                out="assets/thumbs/$gal/$(basename "$f").jpg"
+                if [ ! -f "$out" ]; then
+                  echo "Creando $out"
+                  "$IM" "${f}[0]" -auto-orient -background white -alpha remove -alpha off \
+                    -resize "${LADO}x${LADO}>" -strip -interlace Plane -quality "$CALIDAD" "$out"
+                fi
+              done
+
+            # 2) Borrar miniaturas de fotos que ya no existen
+            find "assets/thumbs/$gal" -maxdepth 1 -type f -name '*.jpg' -print0 | while IFS= read -r -d '' t; do
+              nombre=$(basename "$t" .jpg)
+              if [ ! -f "assets/$gal/$nombre" ]; then
+                echo "Borrando miniatura huérfana $t"
+                rm -f "$t"
+              fi
+            done
+          done
+
+      - name: Guardar cambios y reconstruir la web
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A assets/thumbs
+          if git diff --cached --quiet; then
+            echo "No hay miniaturas nuevas."
+          else
+            git commit -m "Miniaturas de galerías (automático)"
+            git pull --rebase origin main
+            git push
+            # Los envíos hechos por esta tarea no siempre reconstruyen la web: se pide a mano
+            gh api -X POST "repos/${{ github.repository }}/pages/builds" || true
+          fi
