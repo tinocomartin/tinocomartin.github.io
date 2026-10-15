@@ -7,8 +7,21 @@
 
 {% endif %}
 {{ photos.size }} fotograf√≠as
+{% if photos.size == 0 %}--- layout: default --- {% assign galeria_slug = page.folder | remove: '/assets/' | remove: '/' %} {% assign relatos_key = "relatos-" | append: galeria_slug %} {% comment %} Sveltia guarda los textos dentro de una lista llamada "items" (archivo _data/relatos-.yml). Se lee esa lista; si el archivo fuera una lista directa, tambi√©n se admite. {% endcomment %} {% assign relatos_datos = site.data[relatos_key] %} {% if relatos_datos.items %} {% assign relatos_galeria = relatos_datos.items %} {% else %} {% assign relatos_galeria = relatos_datos %} {% endif %}
+{% assign photos = site.static_files | where_exp: "f", "f.path contains page.folder" | sort: "name" %}
+{{ page.title }}
+
+{% if page.description %}
+{{ page.description }}
+
+{% endif %}
+{{ photos.size }} fotograf√≠as
 {% if photos.size == 0 %}
 Todav√≠a no hay fotos en esta galer√≠a. Sube im√°genes a la carpeta {{ page.folder }} del repositorio y aparecer√°n aqu√≠ autom√°ticamente.
+
+{% else %}
+{% comment %} Miniaturas: la cuadr√≠cula usa la versi√≥n ligera de /assets/thumbs/... si existe (las crea autom√°ticamente la tarea "Miniaturas de galer√≠as" de GitHub); el visor sigue abriendo la foto original. Se busca con un bucle sencillo, sin filtros, para que funcione en cualquier versi√≥n de Jekyll. {% endcomment %} {% capture thumbs_folder %}/assets/thumbs/{{ galeria_slug }}/{% endcapture %} {% capture thumb_list %}{% for f in site.static_files %}{% if f.path contains thumbs_folder %}|{{ f.path }}|{% endif %}{% endfor %}{% endcapture %} {% for photo in photos %} {% assign ar = site.data.proporciones[photo.name] | default: 1.5 %} {% comment %} Busca el relato de esta foto con un bucle (sin el filtro "where", que daba error). {% endcomment %} {% assign relato = nil %} {% for r in relatos_galeria %} {% if r.imagen == photo.path %}{% assign relato = r %}{% break %}{% endif %} {% endfor %} {% assign titulo_auto = photo.basename | replace: '-', ' ' | replace: '_', ' ' | remove: ' copia' | strip %} {% assign titulo = relato.titulo | default: titulo_auto %} {% capture thumb_path %}{{ thumbs_folder }}{{ photo.name }}.jpg{% endcapture %} {% capture thumb_needle %}|{{ thumb_path }}|{% endcapture %} {% if thumb_list contains thumb_needle %}{% assign grid_src = thumb_path %}{% else %}{% assign grid_src = photo.path %}{% endif %}  {{ titulo | escape }} {{ titulo | escape }} {% endfor %}
+{% endif %}Todav√≠a no hay fotos en esta galer√≠a. Sube im√°genes a la carpeta {{ page.folder }} del repositorio y aparecer√°n aqu√≠ autom√°ticamente.
 
 {% else %}
 {% comment %} Miniaturas: la cuadr√≠cula usa la versi√≥n ligera de /assets/thumbs/... si existe (las crea autom√°ticamente la tarea "Miniaturas de galer√≠as" de GitHub); el visor sigue abriendo la foto original. Se busca con un bucle sencillo, sin filtros, para que funcione en cualquier versi√≥n de Jekyll. {% endcomment %} {% capture thumbs_folder %}/assets/thumbs/{{ galeria_slug }}/{% endcapture %} {% capture thumb_list %}{% for f in site.static_files %}{% if f.path contains thumbs_folder %}|{{ f.path }}|{% endif %}{% endfor %}{% endcapture %} {% for photo in photos %} {% assign ar = site.data.proporciones[photo.name] | default: 1.5 %} {% assign relato = relatos_galeria | where: "imagen", photo.path | first %} {% assign titulo_auto = photo.basename | replace: '-', ' ' | replace: '_', ' ' | remove: ' copia' | strip %} {% assign titulo = relato.titulo | default: titulo_auto %} {% capture thumb_path %}{{ thumbs_folder }}{{ photo.name }}.jpg{% endcapture %} {% capture thumb_needle %}|{{ thumb_path }}|{% endcapture %} {% if thumb_list contains thumb_needle %}{% assign grid_src = thumb_path %}{% else %}{% assign grid_src = photo.path %}{% endif %}  {{ titulo | escape }} {{ titulo | escape }} {% endfor %}
