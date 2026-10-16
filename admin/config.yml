@@ -1,5 +1,126 @@
-backend:
+backend:backend:
   name: github
+  repo: tinocomartin/tinocomartin.github.io
+  branch: main
+  # Dirección del "Worker" de Cloudflare que gestiona el inicio de sesión con GitHub.
+  base_url: https://sveltia-cms-auth.tinoco-martin.workers.dev
+
+locale: es
+site_url: https://tinocomartin.com
+show_preview_links: true
+
+media_folder: "assets/blog"
+public_folder: "/assets/blog"
+
+# Al subir una foto desde el panel, se reduce (máx. 2400 px por el lado largo)
+# y se guarda como WebP: la web carga más rápido y no hay que preparar las fotos antes.
+media_libraries:
+  default:
+    config:
+      transformations:
+        raster_image:
+          format: webp
+          quality: 85
+          width: 2400
+          height: 2400
+
+collections:
+  - name: "relatos_nocturna"
+    label: "Textos — Nocturna"
+    media_folder: "/assets/nocturna"
+    public_folder: "/assets/nocturna"
+    description: "Aquí subes fotos nuevas a la galería Nocturna y escribes su relato. Pulsa «Añadir fotografía», elige «Subir» para traer la foto desde tu ordenador y rellena el texto. Para añadir texto a una foto que ya está, elígela entre las miniaturas."
+    files:
+      - name: "relatos"
+        label: "Textos de las fotos — Nocturna"
+        file: "_data/relatos-nocturna.yml"
+        fields:
+          - label: "Fotografías"
+            name: "items"
+            widget: "list"
+            label_singular: "fotografía"
+            summary: "{{fields.titulo}}"
+            fields:
+              - { label: "Fotografía", name: "imagen", widget: "image",
+                  media_folder: "/assets/nocturna", public_folder: "/assets/nocturna",
+                  hint: "Elige la foto haciendo clic en su miniatura." }
+              - { label: "Título", name: "titulo", widget: "string", required: false }
+              - { label: "Lugar", name: "lugar", widget: "string", required: false }
+              - { label: "Fecha", name: "fecha", widget: "string", required: false, hint: "Texto libre, por ejemplo: Agosto 2025" }
+              - { label: "Relato", name: "relato", widget: "text", required: false,
+                  hint: "Si lo dejas vacío, la foto se ve igual pero sin el panel de historia en el visor." }
+
+  - name: "relatos_paisaje"
+    label: "Textos — Paisaje"
+    media_folder: "/assets/paisaje"
+    public_folder: "/assets/paisaje"
+    description: "Aquí subes fotos nuevas a la galería Paisaje y escribes su relato. Pulsa «Añadir fotografía», elige «Subir» para traer la foto desde tu ordenador y rellena el texto. Para añadir texto a una foto que ya está, elígela entre las miniaturas."
+    files:
+      - name: "relatos"
+        label: "Textos de las fotos — Paisaje"
+        file: "_data/relatos-paisaje.yml"
+        fields:
+          - label: "Fotografías"
+            name: "items"
+            widget: "list"
+            label_singular: "fotografía"
+            summary: "{{fields.titulo}}"
+            fields:
+              - { label: "Fotografía", name: "imagen", widget: "image",
+                  media_folder: "/assets/paisaje", public_folder: "/assets/paisaje",
+                  hint: "Elige la foto haciendo clic en su miniatura." }
+              - { label: "Título", name: "titulo", widget: "string", required: false }
+              - { label: "Lugar", name: "lugar", widget: "string", required: false }
+              - { label: "Fecha", name: "fecha", widget: "string", required: false }
+              - { label: "Relato", name: "relato", widget: "text", required: false }
+
+  - name: "relatos_vehiculos"
+    label: "Textos — Vehículos"
+    media_folder: "/assets/vehiculos"
+    public_folder: "/assets/vehiculos"
+    description: "Aquí subes fotos nuevas a la galería Vehículos y escribes su relato. Pulsa «Añadir fotografía», elige «Subir» para traer la foto desde tu ordenador y rellena el texto. Para añadir texto a una foto que ya está, elígela entre las miniaturas."
+    files:
+      - name: "relatos"
+        label: "Textos de las fotos — Vehículos"
+        file: "_data/relatos-vehiculos.yml"
+        fields:
+          - label: "Fotografías"
+            name: "items"
+            widget: "list"
+            label_singular: "fotografía"
+            summary: "{{fields.titulo}}"
+            fields:
+              - { label: "Fotografía", name: "imagen", widget: "image",
+                  media_folder: "/assets/vehiculos", public_folder: "/assets/vehiculos",
+                  hint: "Elige la foto haciendo clic en su miniatura." }
+              - { label: "Título", name: "titulo", widget: "string", required: false }
+              - { label: "Lugar", name: "lugar", widget: "string", required: false }
+              - { label: "Fecha", name: "fecha", widget: "string", required: false }
+              - { label: "Relato", name: "relato", widget: "text", required: false }
+
+  - name: "blog"
+    label: "Blog"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    description: "Entradas del blog: una foto de portada y un bloque de texto. Puedes enlazarla a una galería o página ya existente, o dejarla independiente."
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Fecha", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
+      - { label: "Foto de portada", name: "imagen", widget: "image" }
+      - label: "Página relacionada (opcional)"
+        name: "pagina_relacionada"
+        widget: "select"
+        required: false
+        default: ""
+        options:
+          - { label: "Ninguna", value: "" }
+          - { label: "Nocturna", value: "/nocturna/" }
+          - { label: "Paisaje", value: "/paisaje/" }
+          - { label: "Vehículos", value: "/vehiculos/" }
+          - { label: "Fototerapia", value: "/fototerapia/" }
+          - { label: "Sobre mí", value: "/sobre-mi/" }
+      - { label: "Texto de la entrada", name: "body", widget: "markdown" }  name: github
   repo: tinocomartin/tinocomartin.github.io
   branch: main
   # Dirección del "Worker" de Cloudflare que gestiona el inicio de sesión con GitHub.
