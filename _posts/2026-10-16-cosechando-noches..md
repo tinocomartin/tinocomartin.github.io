@@ -2,7 +2,7 @@
 title: Cosechando Noches.
 date: 2026-10-16
 imagen: /assets/blog/Cosechando Noches.webp
-pagina_relacionada: ''
+pagina_relacionada: /vehiculos/
 ---
 
 Cuando el campo ya se había quedado sin luz, ella seguía allí, plantada sobre sus enormes ruedas como un buey de hierro que se negó a jubilarse. La cosechadora: oxidada, naranja de herrumbre y de recuerdos, con el nombre aún grabado en el morro, Deutz-Fahr, como una firma que ningún invierno logró borrar.
