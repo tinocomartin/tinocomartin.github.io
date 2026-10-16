@@ -43,7 +43,8 @@ layout: default
 ---
 {% assign galeria_slug = page.folder | remove: '/assets/' | remove: '/' %}
 {% assign relatos_key = "relatos-" | append: galeria_slug %}
-{% assign relatos_galeria = site.data[relatos_key] %}
+{% assign relatos_datos = site.data[relatos_key] %}
+{% if relatos_datos.items %}{% assign relatos_galeria = relatos_datos.items %}{% else %}{% assign relatos_galeria = relatos_datos %}{% endif %}
 
 <section class="gallery-page">
   {% assign photos = site.static_files | where_exp: "f", "f.path contains page.folder" | sort: "name" %}
