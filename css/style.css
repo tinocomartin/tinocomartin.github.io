@@ -888,3 +888,10 @@ button:focus-visible {
 @media (max-width: 768px) {
   .blog-grid { grid-template-columns: 1fr; gap: 2rem; }
 }
+/* Foto del visor más pequeña en ordenador */
+@media (min-width: 901px) {
+  .lb-img {
+    max-width: 85%;
+    max-height: calc((100vh - 8.5rem) * 0.82);
+  }
+}
