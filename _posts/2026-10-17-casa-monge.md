@@ -1,7 +1,7 @@
 ---
 title: Casa Monge
 date: 2026-10-17
-imagen: /assets/Nocturna/CASA MONGE.webp
+imagen: /assets/nocturna/CASA MONGE.webp
 pagina_relacionada: /nocturna/
 ---
 
