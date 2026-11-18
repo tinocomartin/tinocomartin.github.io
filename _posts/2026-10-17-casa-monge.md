@@ -1,7 +1,7 @@
 ---
 title: Casa Monge
 date: 2026-10-17
-imagen: /assets/blog/Molino del Monje.webp
+imagen: /assets/CASA MONGE.webp
 pagina_relacionada: /nocturna/
 ---
 
