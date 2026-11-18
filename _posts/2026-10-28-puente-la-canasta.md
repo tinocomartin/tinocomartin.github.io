@@ -1,7 +1,7 @@
 ---
 title: Puente La Canasta
 date: 2026-10-28
-imagen: /assets/blog/Canasta II copia.webp
+imagen: /assets/blog/PUENTE LA CANASTA.webp
 pagina_relacionada: /nocturna/
 ---
 
